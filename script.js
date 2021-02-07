@@ -1,5 +1,6 @@
 const foodInput = document.getElementById('food-input'); // Input filed
-const errorMsg = document.getElementById('error-msg');
+const errorMsg = document.getElementById('error-msg'); // Error msg div
+const foodDetailsDiv = document.getElementById('food-details-div'); // Details Div
 
 //Search Button
 document.getElementById('search').addEventListener('click', function () {
@@ -30,20 +31,18 @@ document.getElementById('search').addEventListener('click', function () {
             <h4 class="text-center pt-2">${foodName}</h4>
             `;
                 allFood.appendChild(foodDiv);
-
                 errorMsg.className = "d-none";
             });
         } else {
             foodInput.value = "";
             errorMsg.className = "d-block";
         }
-
     }
+
     // Showing detail's function  (onclick)
     const showDetails = foodDetails => {
-        const foodDetailsDiv = document.getElementById('food-details-div');
-        foodDetailsDiv.className = "d-flex";
 
+        foodDetailsDiv.className = "d-flex";
         const foodImg = foodDetails.strMealThumb;
         const foodDetailImg = document.getElementById('food-detail-img')
         foodDetailImg.src = foodImg;
@@ -55,19 +54,11 @@ document.getElementById('search').addEventListener('click', function () {
 
         const li = `
         <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient1}</li>
-
         <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient2}</li>
-
         <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient3}</li>
-
         <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient4}</li>
-
         <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient5}</li>
         `;
         ul.innerHTML = li;
-
-
-
     }
-
 })
