@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hungry Monster</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
 </head>
+
 <body>
-    
-<h1>Testing</h1>
+
+    <header class="container pb-5">
+
+        <!-- Navbar -->
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img width="100px" class="img-fluid" src="images/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-color-light" aria-current="page" href="#">Home</a>
+                        </li>
+
+                        <li class="nav-item ps-4">
+                            <a class="nav-link text-color-light" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                        </li>
+
+                        <li class="nav-item ps-4">
+                            <a class="nav-link text-color-light" href="#">Recipes</a>
+                        </li>
+
+                        <li class="nav-item ps-4">
+                            <a class="nav-link text-color-light" href="#">Blog</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main class="container">
+        <!-- search bar -->
+        <form class="col-md-6 m-auto ">
+            <div class="input-group mb-3">
+                <input id="city-name" type="text" class="form-control rounded-start" placeholder="Search for Meal...">
+                <div class="input-group-append">
+                    <button id="search" type="button" class="btn btn-danger rounded-end"><i class="fas fa-search"></i>
+                        Search</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <section>
+        <div class="row d-flex justify-content-center">
+            <div class="col-2 food-box">
+                <img width="250px" src="images/food.jpg" alt="">
+                <h4>Food name</h4>
+            </div>
+        </div>
+
+    </section>
+
+
     <script src="script.js"></script>
 </body>
+
 </html>
