@@ -8,11 +8,12 @@ document.getElementById('search').addEventListener('click', function () {
     const showMeal = meals => {
         const allFood = document.getElementById('all-food');
         allFood.innerHTML = "";
+
         meals.forEach(food => {
             const foodDiv = document.createElement('div');
             foodDiv.className = "col-2 p-2 m-2 food-box rounded-3 shadow-sm";
             foodDiv.addEventListener("click", function () {
-                showDetails();
+                showDetails(food);
             });
             const foodImg = food.strMealThumb;
             const foodName = food.strMeal;
@@ -26,11 +27,35 @@ document.getElementById('search').addEventListener('click', function () {
 
         });
     }
-    const showDetails = () => {
-        const foodDetails = document.getElementById('food-details');
-        foodDetails.className = "d-flex";
-        // const foodDetailImg = food-detail-img
-        const 
+    const showDetails = foodDetails => {
+        const foodDetailsDiv = document.getElementById('food-details-div');
+        foodDetailsDiv.className = "d-flex";
+
+        const foodImg = foodDetails.strMealThumb;
+        const foodDetailImg = document.getElementById('food-detail-img')
+        foodDetailImg.src = foodImg;
+
+        const foodDetailName = document.getElementById('food-detail-name');
+        foodDetailName.innerText = foodDetails.strMeal;
+
+        const ul = document.getElementById('ingredients');
+        
+        const li = `
+        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient1}</li>
+
+        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient2}</li>
+
+        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient3}</li>
+
+        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient4}</li>
+        `;
+        ul.innerHTML = li;
+
+
+        // foodDetails.forEach(li => {
+        // });
+
+
     }
 
 })
