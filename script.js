@@ -1,4 +1,6 @@
 const foodInput = document.getElementById('food-input');
+const errorMsg = document.getElementById('error-msg');
+
 document.getElementById('search').addEventListener('click', function () {
     const url = 'https://www.themealdb.com/api/json/v1/1/search.php';
     fetch(`${url}?s=${foodInput.value}`)
@@ -6,26 +8,31 @@ document.getElementById('search').addEventListener('click', function () {
         .then(data => showMeal(data.meals))
 
     const showMeal = meals => {
-        const allFood = document.getElementById('all-food');
-        allFood.innerHTML = "";
+        if (meals) {
+            const allFood = document.getElementById('all-food');
+            allFood.innerHTML = "";
 
-        meals.forEach(food => {
-            const foodDiv = document.createElement('div');
-            foodDiv.className = "col-2 p-2 m-2 food-box rounded-3 shadow-sm";
-            foodDiv.addEventListener("click", function () {
-                showDetails(food);
-            });
-            const foodImg = food.strMealThumb;
-            const foodName = food.strMeal;
-            foodDiv.innerHTML = `
+            meals.forEach(food => {
+                const foodDiv = document.createElement('div');
+                foodDiv.className = "col-2 p-2 m-2 food-box rounded-3 shadow-sm";
+                foodDiv.addEventListener("click", function () {
+                    showDetails(food)
+                });
+                const foodImg = food.strMealThumb;
+                const foodName = food.strMeal;
+                foodDiv.innerHTML = `
             <img width="213px" class="img-fluid rounded-3" src="${foodImg}" alt="">
 
             <h4 class="text-center pt-2">${foodName}</h4>
             `;
-            allFood.appendChild(foodDiv);
+                allFood.appendChild(foodDiv);
 
+                errorMsg.className = "d-none";
+            });
+        } else {
+            errorMsg.className = "d-block";
+        }
 
-        });
     }
     const showDetails = foodDetails => {
         const foodDetailsDiv = document.getElementById('food-details-div');
@@ -39,15 +46,17 @@ document.getElementById('search').addEventListener('click', function () {
         foodDetailName.innerText = foodDetails.strMeal;
 
         const ul = document.getElementById('ingredients');
-        
+
         const li = `
-        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient1}</li>
+        <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient1}</li>
 
-        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient2}</li>
+        <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient2}</li>
 
-        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient3}</li>
+        <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient3}</li>
 
-        <li class="list-group-item border-0 mb-1"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient4}</li>
+        <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient4}</li>
+
+        <li class="list-group-item border-0"><i class="fas fa-check-square"></i> ${foodDetails.strIngredient5}</li>
         `;
         ul.innerHTML = li;
 
