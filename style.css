@@ -2,7 +2,10 @@ body {
     background: url(images/bg.png) no-repeat;
     background-size: cover;
     height: 100vh;
+    background-attachment: fixed;
+
 }
+
 
 .food-box{
     background-color: #eeeeee;

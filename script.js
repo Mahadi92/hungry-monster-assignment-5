@@ -1,17 +1,21 @@
-const foodInput = document.getElementById('food-input');
+const foodInput = document.getElementById('food-input'); // Input filed
 const errorMsg = document.getElementById('error-msg');
 
+//Search Button
 document.getElementById('search').addEventListener('click', function () {
     const url = 'https://www.themealdb.com/api/json/v1/1/search.php';
     fetch(`${url}?s=${foodInput.value}`)
         .then(res => res.json())
         .then(data => showMeal(data.meals))
 
+    // Search food function || Main function 
     const showMeal = meals => {
-        if (meals) {
+        if (meals) { // Error message || extra features
+
             const allFood = document.getElementById('all-food');
             allFood.innerHTML = "";
 
+            // Looping
             meals.forEach(food => {
                 const foodDiv = document.createElement('div');
                 foodDiv.className = "col-2 p-2 m-2 food-box rounded-3 shadow-sm";
@@ -30,10 +34,12 @@ document.getElementById('search').addEventListener('click', function () {
                 errorMsg.className = "d-none";
             });
         } else {
+            foodInput.value = "";
             errorMsg.className = "d-block";
         }
 
     }
+    // Showing detail's function  (onclick)
     const showDetails = foodDetails => {
         const foodDetailsDiv = document.getElementById('food-details-div');
         foodDetailsDiv.className = "d-flex";
@@ -60,9 +66,6 @@ document.getElementById('search').addEventListener('click', function () {
         `;
         ul.innerHTML = li;
 
-
-        // foodDetails.forEach(li => {
-        // });
 
 
     }
