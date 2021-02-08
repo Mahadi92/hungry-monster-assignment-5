@@ -37,8 +37,8 @@ document.getElementById('search').addEventListener('click', function () {
                 errorMsg.className = "d-none";
             });
         } else {
-            errorMsg.className = "d-block";
             foodInput.value = "";
+            errorMsg.className = "d-block";
         }
     }
 
