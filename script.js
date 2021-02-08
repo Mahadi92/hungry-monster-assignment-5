@@ -9,12 +9,16 @@ document.getElementById('search').addEventListener('click', function () {
         .then(res => res.json())
         .then(data => showMeal(data.meals))
 
+        const welcomeDiv = document.getElementById('welcome');
+        welcomeDiv.className = "d-none";
     // Search food function || Main function 
     const showMeal = meals => {
         if (meals) { // Error message || extra features
 
             const allFood = document.getElementById('all-food');
             allFood.innerHTML = "";
+            foodInput.value = "";
+            foodDetailsDiv.className = "d-none";
 
             // Looping
             meals.forEach(food => {
@@ -27,15 +31,14 @@ document.getElementById('search').addEventListener('click', function () {
                 const foodName = food.strMeal;
                 foodDiv.innerHTML = `
             <img width="213px" class="img-fluid rounded-3" src="${foodImg}" alt="">
-
             <h4 class="text-center pt-2">${foodName}</h4>
             `;
                 allFood.appendChild(foodDiv);
                 errorMsg.className = "d-none";
             });
         } else {
-            foodInput.value = "";
             errorMsg.className = "d-block";
+            foodInput.value = "";
         }
     }
 

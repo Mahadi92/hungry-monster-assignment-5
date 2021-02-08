@@ -3,10 +3,15 @@ body {
     background-size: cover;
     height: 100vh;
     background-attachment: fixed;
+    font-family: 'Poppins';
 
 }
-
-
+#food-detail-name{
+    color: crimson;
+}
 .food-box{
     background-color: #eeeeee;
+}
+.web-name{
+    font-family: 'Permanent Marker', cursive;
 }
